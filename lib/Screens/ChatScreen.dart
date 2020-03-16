@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:whatsapp_design/Models/ChatUser.dart';
+import 'package:whatsapp_design/Screens/InChatScreen.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -11,13 +12,13 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top:ScreenUtil().setHeight(20.0)),
+      padding: EdgeInsets.only(top: ScreenUtil().setHeight(20.0)),
       child: ListView.builder(
           itemCount: dummyMsg.length,
           itemBuilder: (context, index) {
             return new Container(
-                padding:
-                    EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20.0)),
+                padding: EdgeInsets.symmetric(
+                    horizontal: ScreenUtil().setWidth(20.0)),
                 height: ScreenUtil().setHeight(120.0),
                 child: new Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,47 +36,57 @@ class _ChatScreenState extends State<ChatScreen> {
                       width: ScreenUtil().setWidth(30.0),
                     ),
                     new Expanded(
-                      child: new Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          new Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              new Container(
-                                width: ScreenUtil().setWidth(400.0),
-                                child: new Text(
-                                  dummyMsg[index].name,
-                                  style: new TextStyle(
-                                      fontSize: ScreenUtil().setSp(32.0),
-                                      fontWeight: FontWeight.w600),
+                      child: new GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) =>
+                                      InChatScreen(user: dummyMsg[index])));
+                        },
+                        child: new Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            new Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                new Container(
+                                  width: ScreenUtil().setWidth(400.0),
+                                  child: new Text(
+                                    dummyMsg[index].name,
+                                    style: new TextStyle(
+                                        fontSize: ScreenUtil().setSp(32.0),
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ),
-                              ),
-                              new Text(
-                                dummyMsg[index].time,
-                                style: new TextStyle(
-                                    fontSize: ScreenUtil().setSp(20.0),
-                                    fontWeight: FontWeight.w400),
-                              )
-                            ],
-                          ),
-                          new SizedBox(height: ScreenUtil().setHeight(8.0)),
-                          new Container(
-                            width: ScreenUtil().setWidth(500.0),
-                            child: new Text(
-                              dummyMsg[index].message,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: new TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: ScreenUtil().setSp(25.0)),
+                                new Text(
+                                  dummyMsg[index].time,
+                                  style: new TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: ScreenUtil().setSp(21.0),
+                                      fontWeight: FontWeight.w400),
+                                )
+                              ],
                             ),
-                          ),
-                          new SizedBox(height: ScreenUtil().setHeight(15.0)),
-                          new Container(
-                              width: ScreenUtil().setWidth(550.0),
-                              child: new Divider())
-                        ],
+                            new SizedBox(height: ScreenUtil().setHeight(8.0)),
+                            new Container(
+                              width: ScreenUtil().setWidth(500.0),
+                              child: new Text(
+                                dummyMsg[index].message,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: new TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: ScreenUtil().setSp(25.0)),
+                              ),
+                            ),
+                            new SizedBox(height: ScreenUtil().setHeight(15.0)),
+                            new Container(
+                                width: ScreenUtil().setWidth(550.0),
+                                child: new Divider())
+                          ],
+                        ),
                       ),
                     )
                   ],
