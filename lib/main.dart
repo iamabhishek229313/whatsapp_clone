@@ -1,7 +1,14 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_design/HomePage.dart';
 
-void main() => runApp(MyApp());
+List<CameraDescription> camera ;
+
+Future<Null> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  camera = await availableCameras() ;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

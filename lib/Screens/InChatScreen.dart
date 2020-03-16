@@ -46,23 +46,26 @@ class _InChatScreenState extends State<InChatScreen> {
                     child: Image.asset(
                       widget.user.imageURL,
                       fit: BoxFit.cover,
-                      height: ScreenUtil().setHeight(60.0),
-                      width: ScreenUtil().setWidth(72.0),
+                      height: ScreenUtil().setHeight(55.0),
+                      width: ScreenUtil().setWidth(67.0),
                     ),
                   ),
-                  new SizedBox(width : ScreenUtil().setWidth(2.0))
+                  new SizedBox(width: ScreenUtil().setWidth(2.0))
                 ],
               ),
             ),
-            new Container(
-              padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-              margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-              width: ScreenUtil().setWidth(300.0),
-              child: new Text(
-                widget.user.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: new TextStyle(fontSize: ScreenUtil().setSp(30.0)),
+            new Expanded(
+              child: new Container(
+                color: Colors.black,
+                padding: EdgeInsets.fromLTRB(
+                    ScreenUtil().setWidth(10.0), 0.0, 0.0, 0.0),
+                margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                child: new Text(
+                  widget.user.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: new TextStyle(fontSize: ScreenUtil().setSp(30.0)),
+                ),
               ),
             )
           ],

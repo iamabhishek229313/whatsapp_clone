@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this);
+    _tabController = new TabController(length: 4, vsync: this,initialIndex: 1);
     _tabController.addListener(() {
       setState(() {
       });
@@ -104,5 +104,10 @@ class _HomePageState extends State<HomePage>
         backgroundColor: Theme.of(context).secondaryHeaderColor,
       );
     }
+  }
+  @override
+  void dispose(){
+    _tabController.dispose() ;
+    super.dispose() ;
   }
 }
