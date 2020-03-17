@@ -20,7 +20,7 @@ class _StatusScreenState extends State<StatusScreen> {
     return _viewedStatus;
   }
 
-  bool _mutedVisibility = true;
+  bool _mutedVisibility = false;
   @override
   Widget build(BuildContext context) {
     return new ListView(

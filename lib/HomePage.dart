@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:whatsapp_design/Screens/Calls.dart';
 import 'package:whatsapp_design/Screens/Camera.dart';
 import 'package:whatsapp_design/Screens/ChatScreen.dart';
+import 'package:whatsapp_design/Screens/LogInPage.dart';
 import 'package:whatsapp_design/Screens/Status.dart';
 
 class HomePage extends StatefulWidget {
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage>
         body: new TabBarView(
           controller: _tabController,
           children: [
-            new CameraScreen(),
+            new LoginPage(),
             new ChatScreen(),
             new StatusScreen(),
             new CallsScreen()
