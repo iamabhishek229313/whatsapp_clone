@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor : Color.fromRGBO(7, 94, 84, 1.0),
-        secondaryHeaderColor: Color.fromRGBO(37, 211, 102,1.0)
+        secondaryHeaderColor: Color.fromRGBO(37, 211, 102,1.0),
+        highlightColor: Color.fromRGBO(18, 140, 126, 1.0)
+        
       ),
       home: HomePage(),
     );
