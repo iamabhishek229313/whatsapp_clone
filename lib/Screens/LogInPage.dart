@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:whatsapp_design/HomePage.dart';
 import 'package:whatsapp_design/Services/Authentication.dart';
 
 class LoginPage extends StatefulWidget {
@@ -61,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     return new Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -73,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                   "Verify your phone number",
                   style: new TextStyle(
                       color: Theme.of(context).highlightColor,
-                      fontSize: ScreenUtil().setSp(35.0),
+                      fontSize: new ScreenUtil().setSp(35.0),
                       fontWeight: FontWeight.w500),
                 ),
               ),
@@ -197,6 +199,7 @@ class _TwoStepVerificationPageState extends State<TwoStepVerificationPage> {
                   color: Theme.of(context).secondaryHeaderColor,
                   onPressed: () {
                     // Send the new phone number to the b=databse and wait for the dummy passcode to be given by the User .
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
                   },
                   child: new Text("VERIFY",
                       style: new TextStyle(

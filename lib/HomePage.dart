@@ -18,16 +18,14 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this,initialIndex: 1);
+    _tabController = new TabController(length: 4, vsync: this, initialIndex: 1);
     _tabController.addListener(() {
-      setState(() {
-      });
+      setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     double tabWidth = MediaQuery.of(context).size.width / 5;
     return Scaffold(
         appBar: new AppBar(
@@ -47,6 +45,7 @@ class _HomePageState extends State<HomePage>
             indicatorColor: Colors.white,
             tabs: [
               new Container(
+                height: ScreenUtil().setHeight(60.0),
                 padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(15.0)),
                 alignment: Alignment.bottomCenter,
                 width: ScreenUtil().setWidth(50.0),
@@ -57,15 +56,18 @@ class _HomePageState extends State<HomePage>
                 )),
               ),
               new Container(
+                  height: ScreenUtil().setHeight(50.0),
                   alignment: Alignment.center,
                   width: tabWidth,
                   child: new Text("CHATS")),
               new Container(
+                height: ScreenUtil().setHeight(50.0),
                 alignment: Alignment.center,
                 width: tabWidth,
                 child: new Text("STATUS"),
               ),
               new Container(
+                height: ScreenUtil().setHeight(50.0),
                 alignment: Alignment.center,
                 width: tabWidth,
                 child: new Text("CALLS"),
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage>
         body: new TabBarView(
           controller: _tabController,
           children: [
-            new LoginPage(),
+            new CameraScreen(),
             new ChatScreen(),
             new StatusScreen(),
             new CallsScreen()
@@ -106,9 +108,10 @@ class _HomePageState extends State<HomePage>
       );
     }
   }
+
   @override
-  void dispose(){
-    _tabController.dispose() ;
-    super.dispose() ;
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 }

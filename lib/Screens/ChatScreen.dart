@@ -15,12 +15,12 @@ class _ChatScreenState extends State<ChatScreen> {
         itemCount: dummyMsg.length,
         itemBuilder: (context, index) {
           return new Container(
-              padding: index == 0
+              margin: index == 0
                   ? EdgeInsets.fromLTRB(
                       ScreenUtil().setWidth(20.0),
                       ScreenUtil().setHeight(10.0),
                       ScreenUtil().setWidth(20.0),
-                      0.0)
+                      ScreenUtil().setHeight(0.0))
                   : EdgeInsets.symmetric(
                       horizontal: ScreenUtil().setWidth(20.0)),
               height: ScreenUtil().setHeight(120.0),

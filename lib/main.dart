@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:whatsapp_design/HomePage.dart';
 import 'package:whatsapp_design/Screens/SplashScreen.dart';
 
@@ -13,8 +14,7 @@ Future<Null> main() async{
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    
+  Widget build(BuildContext context) {    
     return MaterialApp(
       debugShowCheckedModeBanner: false ,
       title: 'Flutter Demo',

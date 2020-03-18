@@ -26,18 +26,19 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     if (!_cameraController.value.isInitialized) {
-      return new Center(child: new Container(
-      ));
+      return new Center(child: new Container());
     } else {
-      return AspectRatio(
-        aspectRatio: _cameraController.value.aspectRatio,
-        child: CameraPreview(_cameraController),
+      return new Scaffold(
+        body: new AspectRatio(
+          aspectRatio: _cameraController.value.aspectRatio,
+          child: CameraPreview(_cameraController),
+        ),
       );
     }
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _cameraController.dispose();
     super.dispose();
   }
