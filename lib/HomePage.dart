@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage>
     double tabWidth = MediaQuery.of(context).size.width / 5;
     return Scaffold(
         appBar: new AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0.0,
           title: new Text("WhatsApp"),
           actions: <Widget>[
