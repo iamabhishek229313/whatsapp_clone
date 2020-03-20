@@ -29,13 +29,16 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> verifyPhone() async {
     final PhoneCodeSent smsOTPSent = (String verId, [int forceCodeResend]) {
       this.verificationId = verId;
-      Navigator.push(context,
-          MaterialPageRoute(builder: (_) => TwoStepVerificationPage(verificationId)));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => TwoStepVerificationPage(verificationId)));
     };
 
     try {
       await _auth.verifyPhoneNumber(
-          phoneNumber:'+'+_countryCodeController.text+_phoneNumberController.text,
+          phoneNumber:
+              '+' + _countryCodeController.text + _phoneNumberController.text,
           timeout: const Duration(seconds: 10),
           verificationCompleted: (AuthCredential cred) {
             print(cred);
@@ -115,7 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                   color: Theme.of(context).secondaryHeaderColor,
                   onPressed: () async {
                     // Send the new phone number to the b=databse and wait for the dummy passcode to be given by the User .
-                    verifyPhone();
+                    //verifyPhone();
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => TwoStepVerificationPage('') ));
                   },
                   child: new Text("NEXT",
                       style: new TextStyle(
@@ -135,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 class TwoStepVerificationPage extends StatefulWidget {
-  String veificationId ;
+  String veificationId;
 
   TwoStepVerificationPage(this.veificationId);
   @override
@@ -194,18 +198,24 @@ class _TwoStepVerificationPageState extends State<TwoStepVerificationPage> {
                   color: Theme.of(context).secondaryHeaderColor,
                   onPressed: () {
                     // Send the new phone number to the b=databse and wait for the dummy passcode to be given by the User .
-                    _auth.currentUser().then((user) async{
+                    _auth.currentUser().then((user) async {
                       if (user != null) {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (_) => HomePage()));
                       } else {
-                        try{
-                          final AuthCredential credential = PhoneAuthProvider.getCredential(verificationId: widget.veificationId, smsCode: _smsCodeController.text) ;
-                          final AuthResult user = await  _auth.signInWithCredential(credential);
-                          final FirebaseUser currenUser = await _auth.currentUser() ;
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
-                        }catch(e){
-                          print("Invalid Code >>>") ;
+                        try {
+                          // final AuthCredential credential =
+                          //     PhoneAuthProvider.getCredential(
+                          //         verificationId: widget.veificationId,
+                          //         smsCode: _smsCodeController.text);
+                          // final AuthResult user =
+                          //     await _auth.signInWithCredential(credential);
+                          // final FirebaseUser currenUser =
+                          //     await _auth.currentUser();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => HomePage()));
+                        } catch (e) {
+                          print("Invalid Code >>>");
                         }
                       }
                     });

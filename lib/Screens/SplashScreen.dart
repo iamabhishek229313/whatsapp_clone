@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:whatsapp_design/HomePage.dart';
 import 'package:whatsapp_design/Screens/LogInPage.dart';
 
 class SplashScrren extends StatefulWidget {
