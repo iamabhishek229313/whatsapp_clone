@@ -18,7 +18,7 @@ class _ChatScreenState extends State<ChatScreen> {
               margin: index == 0
                   ? EdgeInsets.fromLTRB(
                       ScreenUtil().setWidth(20.0),
-                      ScreenUtil().setHeight(10.0),
+                      ScreenUtil().setHeight(25.0),
                       ScreenUtil().setWidth(20.0),
                       ScreenUtil().setHeight(0.0))
                   : EdgeInsets.symmetric(

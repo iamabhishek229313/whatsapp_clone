@@ -92,19 +92,31 @@ class _HomePageState extends State<HomePage>
     if (index == 1) {
       return new FloatingActionButton(
         onPressed: () {},
-        child: new Icon(Icons.message),
+        child: new Icon(Icons.message,color: Colors.white,),
         backgroundColor: Theme.of(context).secondaryHeaderColor,
       );
     } else if (index == 2) {
-      return new FloatingActionButton(
-        onPressed: () {},
-        child: new Icon(Icons.add_a_photo),
-        backgroundColor: Theme.of(context).secondaryHeaderColor,
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          new FloatingActionButton(
+            onPressed: () {},
+            mini: true,
+            child: new Icon(Icons.create,color: Theme.of(context).primaryColor,),
+            backgroundColor: Theme.of(context).accentColor,
+          ),
+          new SizedBox(height: ScreenUtil().setHeight(12.0),),
+          new FloatingActionButton(
+            onPressed: () {},
+            child: new Icon(Icons.add_a_photo,color: Colors.white,),
+            backgroundColor: Theme.of(context).secondaryHeaderColor,
+          ),
+        ],
       );
     } else if (index == 3) {
       return new FloatingActionButton(
         onPressed: () {},
-        child: new Icon(Icons.add_call),
+        child: new Icon(Icons.add_call,color: Colors.white,),
         backgroundColor: Theme.of(context).secondaryHeaderColor,
       );
     }
