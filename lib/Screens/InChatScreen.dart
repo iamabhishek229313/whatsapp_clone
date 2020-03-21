@@ -1,3 +1,4 @@
+import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:whatsapp_design/Models/ChatUser.dart';
@@ -22,7 +23,7 @@ class _InChatScreenState extends State<InChatScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).accentColor,
         appBar: new AppBar(
           automaticallyImplyLeading: false,
           titleSpacing: 0.0,
@@ -83,8 +84,26 @@ class _InChatScreenState extends State<InChatScreen> {
           children: <Widget>[
             new Expanded(
                 flex: 12,
-                child: new Container(
-                  color: Colors.transparent,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().setWidth(20.0)),
+                  child: new ListView.builder(
+                    itemCount: 10,
+                    reverse: true,
+                    itemBuilder: (context, index) {
+                      return new Bubble(
+                        margin: BubbleEdges.only(
+                            top: ScreenUtil().setHeight(20.0),
+                            right: ScreenUtil().setWidth(100.0)),
+                        nip: BubbleNip.leftTop,
+                        nipHeight: ScreenUtil().setHeight(18.0),
+                        alignment: Alignment.centerLeft,
+                        child: new Text(
+                          "This from uThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userser",
+                        ),
+                      );
+                    },
+                  ),
                 )),
             new Container(
               padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(5.0)),
@@ -114,13 +133,21 @@ class _InChatScreenState extends State<InChatScreen> {
                                 hintText: "Type a message",
                                 border: InputBorder.none,
                                 suffixIcon: Padding(
-                                  padding: EdgeInsets.only(right : ScreenUtil().setWidth(20.0)),
+                                  padding: EdgeInsets.only(
+                                      right: ScreenUtil().setWidth(20.0)),
                                   child: new Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
-                                      new Icon(Icons.attachment,color: Colors.grey,),
-                                      new SizedBox(width : ScreenUtil().setWidth(15.0)),
-                                      new Icon(Icons.camera_alt,color: Colors.grey,),
+                                      new Icon(
+                                        Icons.attachment,
+                                        color: Colors.grey,
+                                      ),
+                                      new SizedBox(
+                                          width: ScreenUtil().setWidth(15.0)),
+                                      new Icon(
+                                        Icons.camera_alt,
+                                        color: Colors.grey,
+                                      ),
                                     ],
                                   ),
                                 ),
