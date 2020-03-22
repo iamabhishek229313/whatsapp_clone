@@ -1,7 +1,10 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:whatsapp_design/Models/ChatUser.dart';
+import 'package:whatsapp_design/Models/Message.dart';
+import 'package:whatsapp_design/Models/my_flutter_app_icons.dart';
 
 class InChatScreen extends StatefulWidget {
   ChatUser user;
@@ -90,11 +93,10 @@ class _InChatScreenState extends State<InChatScreen> {
                     right: ScreenUtil().setWidth(20.0),
                   ),
                   child: new ListView.builder(
-                    itemCount: 10,
+                    itemCount: msgs.length,
                     reverse: true,
                     itemBuilder: (context, index) {
-                      isMe = !isMe;
-                      return isMe
+                      return msgs[index].isMe
                           ? new Bubble(
                               margin: BubbleEdges.only(
                                   top: ScreenUtil().setHeight(20.0),
@@ -104,20 +106,77 @@ class _InChatScreenState extends State<InChatScreen> {
                                       : ScreenUtil().setHeight(0.0)),
                               nip: BubbleNip.rightTop,
                               color: Color.fromRGBO(225, 255, 199, 1.0),
-                              nipHeight: ScreenUtil().setHeight(18.0),
-                              alignment: Alignment.centerLeft,
-                              child: new Text(
-                                  "This is from the client side , and aften used as to declare an event such as the provider ."),
+                              nipHeight: ScreenUtil().setHeight(12.0),
+                              alignment: Alignment.centerRight,
+                              child: new Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  new Text(
+                                    msgs[index].msg + '$index',
+                                  ),
+                                  new SizedBox(
+                                    height: ScreenUtil().setHeight(10.0),
+                                  ),
+                                  new Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        msgs[index].time,
+                                        style: new TextStyle(
+                                            fontSize:
+                                                ScreenUtil().setSp(20.0),
+                                            color: Colors.grey),
+                                      ),
+                                      new SizedBox(
+                                        width: ScreenUtil().setWidth(10.0),
+                                      ),
+                                      new Icon(
+                                        msgs[index].sent
+                                            ? Icons.check
+                                            : MyFlutterApp
+                                                .icons8_double_tick_50,
+                                        color: msgs[index].seen
+                                            ? Colors.blue
+                                            : Colors.grey,
+                                        size: ScreenUtil().setSp(27.0),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             )
                           : new Bubble(
                               margin: BubbleEdges.only(
                                   top: ScreenUtil().setHeight(20.0),
                                   right: ScreenUtil().setWidth(100.0)),
                               nip: BubbleNip.leftTop,
-                              nipHeight: ScreenUtil().setHeight(18.0),
+                              nipHeight: ScreenUtil().setHeight(12.0),
                               alignment: Alignment.centerLeft,
-                              child: new Text(
-                                "This from uThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userser",
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  new Text(
+                                    msgs[index].msg + '$index',
+                                  ),
+                                  new SizedBox(
+                                    width: ScreenUtil().setWidth(10.0),
+                                  ),
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      new Text(
+                                        msgs[index].time,
+                                        style: new TextStyle(
+                                            fontSize: ScreenUtil().setSp(20.0),
+                                            color: Colors.grey),
+                                      ),
+                                    ],
+                                  )
+                                ],
                               ),
                             );
                     },
