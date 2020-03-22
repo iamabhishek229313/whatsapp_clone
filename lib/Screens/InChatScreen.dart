@@ -13,7 +13,7 @@ class InChatScreen extends StatefulWidget {
 
 class _InChatScreenState extends State<InChatScreen> {
   TextEditingController _messageController;
-
+  bool isMe = false;
   @override
   void initState() {
     super.initState();
@@ -85,23 +85,41 @@ class _InChatScreenState extends State<InChatScreen> {
             new Expanded(
                 flex: 12,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: ScreenUtil().setWidth(20.0)),
+                  padding: EdgeInsets.only(
+                    left: ScreenUtil().setWidth(20.0),
+                    right: ScreenUtil().setWidth(20.0),
+                  ),
                   child: new ListView.builder(
                     itemCount: 10,
                     reverse: true,
                     itemBuilder: (context, index) {
-                      return new Bubble(
-                        margin: BubbleEdges.only(
-                            top: ScreenUtil().setHeight(20.0),
-                            right: ScreenUtil().setWidth(100.0)),
-                        nip: BubbleNip.leftTop,
-                        nipHeight: ScreenUtil().setHeight(18.0),
-                        alignment: Alignment.centerLeft,
-                        child: new Text(
-                          "This from uThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userser",
-                        ),
-                      );
+                      isMe = !isMe;
+                      return isMe
+                          ? new Bubble(
+                              margin: BubbleEdges.only(
+                                  top: ScreenUtil().setHeight(20.0),
+                                  left: ScreenUtil().setWidth(100.0),
+                                  bottom: index == 0
+                                      ? ScreenUtil().setHeight(10.0)
+                                      : ScreenUtil().setHeight(0.0)),
+                              nip: BubbleNip.rightTop,
+                              color: Color.fromRGBO(225, 255, 199, 1.0),
+                              nipHeight: ScreenUtil().setHeight(18.0),
+                              alignment: Alignment.centerLeft,
+                              child: new Text(
+                                  "This is from the client side , and aften used as to declare an event such as the provider ."),
+                            )
+                          : new Bubble(
+                              margin: BubbleEdges.only(
+                                  top: ScreenUtil().setHeight(20.0),
+                                  right: ScreenUtil().setWidth(100.0)),
+                              nip: BubbleNip.leftTop,
+                              nipHeight: ScreenUtil().setHeight(18.0),
+                              alignment: Alignment.centerLeft,
+                              child: new Text(
+                                "This from uThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userThis from userser",
+                              ),
+                            );
                     },
                   ),
                 )),
