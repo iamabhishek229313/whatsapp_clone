@@ -16,7 +16,6 @@ class InChatScreen extends StatefulWidget {
 
 class _InChatScreenState extends State<InChatScreen> {
   TextEditingController _messageController;
-  bool isMe = false;
   @override
   void initState() {
     super.initState();
@@ -99,36 +98,41 @@ class _InChatScreenState extends State<InChatScreen> {
                       return msgs[index].isMe
                           ? new Bubble(
                               margin: BubbleEdges.only(
-                                  top: ScreenUtil().setHeight(20.0),
+                                  top: (index < msgs.length - 1 &&
+                                          msgs[index + 1].isMe)
+                                      ? ScreenUtil().setHeight(5.0)
+                                      : ScreenUtil().setHeight(20.0),
                                   left: ScreenUtil().setWidth(100.0),
                                   bottom: index == 0
                                       ? ScreenUtil().setHeight(10.0)
                                       : ScreenUtil().setHeight(0.0)),
-                              nip: BubbleNip.rightTop,
+                              nip: (index < msgs.length - 2 &&
+                                      msgs[index + 1].isMe)
+                                  ? BubbleNip.no
+                                  : BubbleNip.rightTop,
                               color: Color.fromRGBO(225, 255, 199, 1.0),
                               nipHeight: ScreenUtil().setHeight(12.0),
                               alignment: Alignment.centerRight,
+                              elevation: 0.4,
                               child: new Column(
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   new Text(
-                                    msgs[index].msg + '$index',
+                                    msgs[index].msg,
                                   ),
                                   new SizedBox(
                                     height: ScreenUtil().setHeight(10.0),
                                   ),
                                   new Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
                                         msgs[index].time,
                                         style: new TextStyle(
-                                            fontSize:
-                                                ScreenUtil().setSp(20.0),
+                                            fontSize: ScreenUtil().setSp(20.0),
                                             color: Colors.grey),
                                       ),
                                       new SizedBox(
@@ -151,22 +155,32 @@ class _InChatScreenState extends State<InChatScreen> {
                             )
                           : new Bubble(
                               margin: BubbleEdges.only(
-                                  top: ScreenUtil().setHeight(20.0),
+                                  top: (index < msgs.length - 2 &&
+                                          msgs[index + 1].isMe)
+                                      ? ScreenUtil().setHeight(20.0)
+                                      : ScreenUtil().setHeight(5.0),
                                   right: ScreenUtil().setWidth(100.0)),
-                              nip: BubbleNip.leftTop,
+                              nip: (index < msgs.length - 1 &&
+                                      msgs[index + 1].isMe)
+                                  ? BubbleNip.leftTop
+                                  : BubbleNip.no,
                               nipHeight: ScreenUtil().setHeight(12.0),
                               alignment: Alignment.centerLeft,
-                              child: new Row(
+                              elevation: 0.4,
+                              child: new Column(
                                 mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   new Text(
-                                    msgs[index].msg + '$index',
+                                    msgs[index].msg,
                                   ),
                                   new SizedBox(
-                                    width: ScreenUtil().setWidth(10.0),
+                                    height: ScreenUtil().setHeight(10.0),
                                   ),
-                                  new Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                  new Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
                                         msgs[index].time,
@@ -175,7 +189,7 @@ class _InChatScreenState extends State<InChatScreen> {
                                             color: Colors.grey),
                                       ),
                                     ],
-                                  )
+                                  ),
                                 ],
                               ),
                             );

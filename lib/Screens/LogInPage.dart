@@ -119,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () async {
                     // Send the new phone number to the b=databse and wait for the dummy passcode to be given by the User .
                     //verifyPhone();
+                    Navigator.pop(context);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => TwoStepVerificationPage('') ));
                   },
                   child: new Text("NEXT",
@@ -200,6 +201,7 @@ class _TwoStepVerificationPageState extends State<TwoStepVerificationPage> {
                     // Send the new phone number to the b=databse and wait for the dummy passcode to be given by the User .
                     _auth.currentUser().then((user) async {
                       if (user != null) {
+                        Navigator.pop(context);
                         Navigator.push(context,
                             MaterialPageRoute(builder: (_) => HomePage()));
                       } else {
@@ -212,6 +214,7 @@ class _TwoStepVerificationPageState extends State<TwoStepVerificationPage> {
                           //     await _auth.signInWithCredential(credential);
                           // final FirebaseUser currenUser =
                           //     await _auth.currentUser();
+                          Navigator.pop(context);
                           Navigator.push(context,
                               MaterialPageRoute(builder: (_) => HomePage()));
                         } catch (e) {
